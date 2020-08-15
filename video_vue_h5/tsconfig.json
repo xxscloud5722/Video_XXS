@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "inlineSources": false,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "listFiles": true,
+    "allowJs": true,
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "pretty": true,
+    "strictFunctionTypes": false,
+    "importHelpers": true,
+    "lib": [
+      "es2015"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

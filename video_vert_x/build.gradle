@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.0-rc'
+}
+
+group 'com.xxscloud.videox'
+version '1.0'
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/central' }
+    mavenCentral()
+    jcenter()
+//    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile 'io.vertx:vertx-core:3.9.2'
+    compile 'io.vertx:vertx-lang-kotlin:3.9.2'
+    compile 'io.vertx:vertx-web:3.9.2'
+    compile 'io.vertx:vertx-mysql-client:3.9.2'
+    compile 'io.vertx:vertx-lang-kotlin-coroutines:3.9.2'
+    compile 'io.vertx:vertx-redis-client:3.9.2'
+    compile 'io.vertx:vertx-auth-shiro:3.9.2'
+    compile 'io.vertx:vertx-auth-common:3.9.2'
+    compile 'io.vertx:vertx-config:3.9.2'
+
+    //Gson
+    compile 'com.google.code.gson:gson:2.8.5'
+    //IOC注入
+    compile 'com.google.inject:guice:4.0'
+
+    //协程
+    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    //bean转换
+    compile 'commons-beanutils:commons-beanutils:1.9.4'
+
+    //日志
+    compile 'org.slf4j:slf4j-api:1.7.26'
+    compile 'ch.qos.logback:logback-core:1.1.7'
+    compile 'ch.qos.logback:logback-classic:1.1.7'
+
+
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.xxscloud.videox.Application'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+    into('resources') {
+        from 'resources'
+    }
+}
